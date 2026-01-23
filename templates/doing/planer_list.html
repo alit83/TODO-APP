@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>planer</title>
+</head>
+<body>
+    {% for task in tasks %}
+    {% if task.user.username == request.user.username %}
+   <h2>{{task.task}} - </h2> 
+    <form action="{% url 'doing:todo-delete' pk=task.id %}" method="post">
+    {% csrf_token %}
+    <button style="background-color: red;">
+        delete
+    </button>
+   </form> 
+   {% endif %}
+ 
+    {% endfor %}
+
+    <form method="post" action="{% url 'doing:todo-create' %}">
+        {% csrf_token %}
+        <input type="text" name="task">
+        <Button>
+            bezan
+        </Button>
+           
+
+
+    </form>
+    <form  method="post"> 
+        {% csrf_token %}
+    {{ form.as_p }}
+    <button>
+        hfhf
+    </button>
+    </form>
+    
+    
+</body>
+</html>
