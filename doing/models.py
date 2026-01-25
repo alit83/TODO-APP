@@ -8,6 +8,7 @@ from django.dispatch import receiver
 class Planer(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
     task = models.TextField(null=True)
+    done = models.TextField(null=True)
     
 
 
