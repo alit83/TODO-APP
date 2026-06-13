@@ -20,7 +20,7 @@ def SignupView(request):
             form.save()
             return HttpResponseRedirect('/account/login/')
         else:
-            messages.add_message(request,messages.ERROR,'ridi')
+            messages.add_message(request,messages.ERROR,'invalid values')
 
     return render(request,'account/signup.html')
         
