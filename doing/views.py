@@ -1,5 +1,5 @@
 from django.shortcuts import  get_object_or_404 , redirect
-from django.views.generic import ListView , UpdateView , CreateView , DeleteView ,View
+from django.views.generic import ListView  , CreateView , DeleteView ,View
 from .models import Planer
 from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.

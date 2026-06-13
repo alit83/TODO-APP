@@ -1,10 +1,11 @@
 from django.shortcuts import render , redirect
-from django.contrib.auth.forms import  UserCreationForm 
+from django.urls import reverse_lazy
+from django.contrib.auth.forms import  UserCreationForm
 from .models import User , UserManager
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 from .forms import UserCreateForm
-from django.contrib.auth import login , authenticate 
+from django.contrib.auth import login , authenticate ,logout
 
 
 from doing.models import Planer
@@ -25,8 +26,12 @@ def SignupView(request):
     return render(request,'account/signup.html')
         
 
-
-
+def LogOutView(request):
+    if request.user.is_authenticated:
+        logout(request)
+    else:
+        messages.add_message(request,messages.ERROR,'You must first login')
+    return redirect(reverse_lazy('account:login-account'))
 def LoginView(request):
     if request.user.is_authenticated:
         return redirect('/')
@@ -36,8 +41,9 @@ def LoginView(request):
         if '@' in username:
             try:
                 username=(User.objects.get(email=username).username).lower().strip()
-            except user.DoseNotExist:
+            except User.DoesNotExist:
                 messages.add_message(request,messages.ERROR,'username or password is incorrect')
+                return render(request,'account/login.html')
         user=authenticate(request,username=username,password=password)
         if user is not None:
             login(request,user)
