@@ -53,6 +53,7 @@ python manage.py runserver
 Then open your browser at `http://127.0.0.1:8000/`.
 
 ## Screenshots
+<img width="1349" height="871" alt="Screenshot 2026-06-15 224709" src="https://github.com/user-attachments/assets/b63ad3a9-70cf-406c-99c3-fc24cfd53842" />
 
 > _Add a screenshot of the app below to showcase the UI._
 
